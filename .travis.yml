@@ -1,0 +1,10 @@
+sudo: required
+services:
+  - docker
+install:
+  - docker login -u $DOCKER_USER -p $DOCKER_PASS
+
+script:
+  - docker build -t ciandtsoftware/rundeck:latest .
+  - docker tag ciandtsoftware/rundeck:latest ciandtsoftware/rundeck:1.0.$TRAVIS_BUILD_NUMBER
+  - docker push ciandtsoftware/rundeck
