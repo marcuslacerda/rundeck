@@ -1,10 +1,16 @@
 sudo: required
 services:
-  - docker
+- docker
+
+env:
+  global:
+  - secure: aIEOlLH+LxOGyhx6mDpSeYgnh8vpiu5s3sPSGDTzjoUf4tcrR7xrJj1OsiF3pW7XobSDemKVcPLAH7aCcOXOE/XJY/Tnk5oF6GJqSyWMUfmWKktK9Y0ROTGxD077Hx2wRZpF+4CxnsTdUMhmotkHbdU37JhH72IiSQgO9u8xIv4U3HY9F+/AJSE27rW41ODXAQ/rzi3CP4GYtIUJNASJgqChWPgoYZ8TILI8KUZ2AU6FIkG+2SVwoKXLi2nEgOOsE5/3KX7QlhcxvWf0k8B+q1SkyRz2r4FTU1FETWaNHKxErv8DJBWSJPYSB5sVRBg4Ot7LqgmPeaYDbqKU46L5N9qasPahHP2vmF4eO9zryyMHMvDAtHkmXlpysixhxZB927XORYWqeLvp20vy2XeBNlRZaOHHHdTpxt6dyK/vrYCsa5ykD2Iu5/GluvcwL2FWAnLFJMUayR88mbjZHGaZOMqmY1ezEkurtrLj5cFMrYxYgkjViniYObpjDrHQGVpw+6JHY26vjRWxfuzXZ2NfCDfkpytNRsSrN+F3JJC9+B2rxrE4cadVWX/s5my8YaV/VO8DeL2+CBwK0KpuDphtTWdLXXkxAiRlXPO+aAYFvvzmJ7cwzP4dAdkvAG01xvTgXEQslN5qqlFt3DBPSzYkeinK/b7XbwQqfdj4jpZd3us=
+  - secure: mQGaPhrE27o/2Pjg/sDsQSIKPTpdkiDZZlKmqbZg2SzmV7nGfpRY37H0GQJIplErc8yj39GLzOGGOYSF/uBWPy0uLEpZtoTREp6pgsdM1SDEhO4WCm+7OFsGFRYzrpQQ0t9mkbpMp0SEMllqQ+T+S2sXAN8FRMf0je8ERvctsigUzmuA11/oqme0KD1WsEFIWsRBBdfOIghPKKafcYdAvrP4isjmikC7mlDaBI0M3D4kDoVboEi0KFtN9yzk5k/LwPtLsCGpWS19NEeKN0or931k4qkGDBt/9iQA2hUZYLYaytiWiccUhKRxkNYCyJf2jKrZ8mgsSOb/rSzaheDFA4If9gPpqV0twS+dRoiNIg+f3/Ji7Ugt9rITjduouAU4VYbnzYEgKv2woHD6oS0f3A9lHF46xN/Y68LJiHNmiIiGXh1xeFPWRitID44H8NjLYHD0SvtRfFVlsvhdSj+na81DaCsp0gPvh2sHYjIFW7ZzUIomderU/iJoC6aNxhdAttUO92FQW6KRbwhjmLtfENCiMDF9M3EJ+kQnTDY2Az07IRS6mJhK5gDxM9cB40LLYs5OEGDGtoa+HdwqEJwKtoA72DM/6gHtGZmFz1v0OyqPmyUYUlNoV+JjbLlylLlUafvI82kcdG0haDab/Itbd9HR09sQgdqpzfQtP2DJNFM=
+
 install:
-  - docker login -u $DOCKER_USER -p $DOCKER_PASS
+- docker login -u $DOCKER_USER -p $DOCKER_PASS
 
 script:
-  - docker build -t ciandtsoftware/rundeck:latest .
-  - docker tag ciandtsoftware/rundeck:latest ciandtsoftware/rundeck:1.0.$TRAVIS_BUILD_NUMBER
-  - docker push ciandtsoftware/rundeck
+- docker build -t ciandtsoftware/rundeck:latest .
+- docker tag ciandtsoftware/rundeck:latest ciandtsoftware/rundeck:1.0.$TRAVIS_BUILD_NUMBER
+- docker push ciandtsoftware/rundeck
