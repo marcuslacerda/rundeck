@@ -17,7 +17,7 @@ ENV SERVER_URL=https://localhost:4443 \
 RUN export DEBIAN_FRONTEND=noninteractive && \
     echo "deb http://ftp.debian.org/debian stretch-backports main" >> /etc/apt/sources.list && \
     apt-get -qq update && \
-    apt-get -qqy install -t stretch-backports --no-install-recommends bash openjdk-8-jre-headless ca-certificates-java supervisor procps sudo ca-certificates openssh-client mysql-server mysql-client pwgen curl git uuid-runtime parallel python-pip && \
+    apt-get -qqy install -t stretch-backports --no-install-recommends bash openjdk-8-jre-headless ca-certificates-java supervisor procps sudo ca-certificates openssh-client mysql-server mysql-client pwgen curl git uuid-runtime parallel python-pip libpython-dev python-dev && \
     cd /tmp/ && \
     curl -Lo /tmp/rundeck.deb http://dl.bintray.com/rundeck/rundeck-deb/rundeck_2.10.6-1-GA_all.deb && \
     echo '91f259838d99069ec2b80c13dd0baca54197d8cba3401dff5f7296adc6798838  rundeck.deb' > /tmp/rundeck.sig && \
@@ -38,6 +38,15 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     cd - && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
+
+RUN pip install setuptools
+RUN pip install google-api-python-client
+RUN pip install requests
+RUN pip install httplib2
+RUN pip install elasticsearch
+RUN pip install python-dotenv
+RUN pip install lxml
+RUN pip install PyYAML
 
 ADD content/ /
 RUN chmod u+x /opt/run && \
